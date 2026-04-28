@@ -1,12 +1,9 @@
 from selenium.webdriver.common.by import By
-from selenium import webdriver
-
-driver = webdriver.Chrome()
 
 ACCOUNT_BUTTON = (By.XPATH, ".//p[text()='Личный Кабинет']")  #  Кнопка Личный кабинет  
 REGISTER_LINK = (By.XPATH, ".//a[text()='Зарегистрироваться']") # Кнопка Зарегистрироваться
-NAME_FIELD = (By.XPATH, "(//input[@type='text'])[1]")  # Поле Имя
-EMAIL_FIELD = (By.XPATH, "(//input[@type='text'])[2]")  # Поле Email
+NAME_FIELD = (By.XPATH, ".//label[text()='Имя']/following-sibling::input[@type='text']")  # Поле Имя
+EMAIL_FIELD = (By.XPATH, ".//label[text()='Email']/following-sibling::input[@type='text']")  # Поле Email
 LOGIN_EMAIL_FIELD = (By.XPATH, "(//input[@type='text'])[1]")  #  Поле email на форме Войти
 PASSWORD_FIELD = (By.XPATH, ".//input[@type='password']")  # Поле пароль
 REGISTER_BUTTON = (By.XPATH, ".//button[text()='Зарегистрироваться']")  # Кнопка зарегистрироваться
@@ -19,3 +16,6 @@ BUNS_SECTION = (By.XPATH, ".//span[text()='Булки']")  #  Меню булк�
 SAUCES_SECTION = (By.XPATH, ".//span[text()='Соусы']")  #  Меню Соусы
 FILLINGS_SECTION = (By.XPATH, ".//span[text()='Начинки']")  #  Меню начинки
 REGEN_BUTTTON = (By.XPATH, ".//a[text()='Восстановить пароль']") # Кнопка Восстановить пароль
+BUNS_TITLE = (By.XPATH, ".//h2[text()='Булки']") # Заголовок Булки
+SAUCES_TITLE = (By.XPATH, ".//h2[text()='Соусы']") # Заголовок Соусы
+FILLINGS_TITLE = (By.XPATH, ".//h2[text()='Начинки']") # Заголовок Начинки

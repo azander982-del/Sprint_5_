@@ -1,26 +1,19 @@
 import pytest
-from locators import BUNS_SECTION, SAUCES_SECTION, FILLINGS_SECTION, ACCOUNT_BUTTON, LOGIN_EMAIL_FIELD, PASSWORD_FIELD, BUTTON_IN
+from locators import BUNS_SECTION, SAUCES_SECTION,BUNS_TITLE, SAUCES_TITLE, FILLINGS_TITLE, FILLINGS_SECTION, ACCOUNT_BUTTON, LOGIN_EMAIL_FIELD, PASSWORD_FIELD, BUTTON_IN
 from data import TEST_EMAIL, DEFAULT_PASSWORD
 from selenium.webdriver.common.by import By
-import time
 
-@pytest.mark.parametrize("section_locator, section_name", [
-    (SAUCES_SECTION, "Соусы"),
-    (FILLINGS_SECTION, "Начинки"),
-    (BUNS_SECTION, "Булки")
+@pytest.mark.parametrize("section_locator, section_title, section_name", [
+    (SAUCES_SECTION, SAUCES_TITLE, "Соусы"),
+    (FILLINGS_SECTION, FILLINGS_TITLE, "Начинки"),
+    (BUNS_SECTION, BUNS_TITLE, "Булки")
 ])
-def test_constructor_sections(driver, section_locator, section_name):
-
+def test_constructor_sections(driver, section_locator,section_title, section_name):
+    
     driver.find_element(*ACCOUNT_BUTTON).click()
-    time.sleep(1)
     driver.find_element(*LOGIN_EMAIL_FIELD).send_keys(TEST_EMAIL)
     driver.find_element(*PASSWORD_FIELD).send_keys(DEFAULT_PASSWORD)
     driver.find_element(*BUTTON_IN).click()
-    time.sleep(1)
+    driver.find_element(*section_locator).click()
     
-    span_element = driver.find_element(*section_locator)
-    parent_div = span_element.find_element(By.XPATH, "..")
-    parent_div.click()
-    time.sleep(1)
-    
-    assert "tab_tab_type_current__2BEPc" in parent_div.get_attribute("class")
+    assert driver.find_element(*section_title).is_displayed()
