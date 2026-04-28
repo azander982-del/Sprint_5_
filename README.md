@@ -1,5 +1,5 @@
 Для тестов входа требуется создать нового пользователя
-- Email: test8@test.ru
+- Email: test321@test.ru
 - Пароль: 123456
 
 test_go_to_constructor_from_profile - Переход из личного кабинета в конструктор бургеров
